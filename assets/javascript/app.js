@@ -1,5 +1,7 @@
 var correct = 0;
+
 var wrong = 0;
+
 var myQuestions = [
 
 	{ "question": "What year was Phi Sigma Sigma founded?",
@@ -26,10 +28,26 @@ var myQuestions = [
 		"answers": ['Navy and Gold','King Blue and Gold','Rose Red and Sunshine Yellow','Black and White'],
 		"correctAnswer": 'King Blue and Gold'
 	},
-	{ "question": "What is Phi Sigma Sigma's flower?",
-		"answers": ['Shasta Daisy','Moutan Peony','Common Sunflower','American Beauty Rose'],
-		"correctAnswer": 'American Beauty Rose'
-	}
+
+	{ "question": "Where is Phi Sigma Sigma Headquarters located?",
+		"answers": ['Baltimore, MD','Washington, D.C.','Elkridge, MD','New York City, NY'],
+		"correctAnswer": 'Elkridge, MD'
+	},
+
+	{ "question": "What is Phi Sigma Sigma's motto?",
+	"answers": ['Diokete Upsala','Union hand in hand','Do Good','Seek the Noblest'],
+	"correctAnswer": 'Diokete Upsala'
+	},
+
+	{ "question": "What is Phi Sigma Sigma's symbol?",
+		"answers": ['Skull & Crossbones','Anchor','Arrow','Sphinx'],
+		"correctAnswer": 'Sphinx'
+	},
+
+	{ "question": "What does LITP mean?",
+		"answers": ['Lean into thy prayer','Love in the Pyramid','Learning in the purest ','Lean into the Phi'],
+		"correctAnswer": 'Love in the Pyramid'
+	},
 
 ];
 
@@ -47,8 +65,6 @@ var number = 30;
 
 var intervalId;
 
-
-
 function start(){
 
 	$("#btn").on("click", function(){
@@ -57,27 +73,36 @@ function start(){
 		console.log("Timer set.");
 		$('#btn').hide();
 
-		//function showQuestions- onclick of button
-		function displayQuestion(qIndex) {
-
-			 $("#question").html(myQuestions[qIndex].question);
-
-			for (var i = 0; i < myQuestions.length; i++) {
-				 var answerBtn = $("<button>");
-				 answerBtn.addClass("answer-button");
-				 answerBtn.attr("data-answer", myQuestions[qIndex].answers[i-1]);
-				 answerBtn.text(myQuestions[qIndex].answers[i-1]);
-				 answerBtn.click(checkAnswer);
-				 $("#answer").append(answerBtn);
-			}
-
-		};
-
-		displayQuestion([0]);
+		displayQuestion(0);
 
 	})
 };
 
+//function showQuestions- onclick of button
+function displayQuestion(qIndex) {
+
+	console.log(qIndex);
+
+	 $("#question").html(myQuestions[qIndex].question);
+
+	$("#answer").html('');
+	for (var i = 0; i < myQuestions.length; i++) {
+
+		 var answerBtn = $("<button>");
+
+		 answerBtn.addClass("answer-button");
+
+		 answerBtn.attr("data-answer", myQuestions[qIndex].answers[i-1]);
+
+		 answerBtn.text(myQuestions[qIndex].answers[i-1]);
+
+		 answerBtn.click(checkAnswer);
+
+		 $("#answer").append(answerBtn);
+
+	}
+
+};
 
 var qIndex= 0;
 
@@ -92,14 +117,25 @@ function checkAnswer(){
 	if(userSelect === correctAnswer) {
 
 		console.log("Correct!");
+
+		correct++;
+
 		 qIndex++;
-		 displayQuestion();
+
+		 displayQuestion(qIndex);
 		
 	}
 
 	else {
 
 		console.log("Incorrect!");
+
+		wrong++;
+
+		qIndex++;
+
+		displayQuestion(qIndex);
+
 	};
 
 };
@@ -120,7 +156,6 @@ function decrement() {
 
 		console.log("Time Up!");
 
-		qIndex++;
 	} 
 
 }
