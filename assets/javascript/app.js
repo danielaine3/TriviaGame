@@ -33,12 +33,31 @@ var myQuestions = [
 
 ];
 
-function displayQuestion(qnum) {
-	if(quesitonIndex <= (myQuestions.length - 1)) {
-		$("#question").html(myQuestions[qnum]);
 
+function displayQuestion(qIndex) {
+
+	 $("#question").html(myQuestions[qIndex].question);
+
+	for (var i = 0; i < myQuestions.length; i++) {
+		 var answerBtn = $("<button>");
+		 answerBtn.addClass("answer-button");
+		 answerBtn.attr("data-answer", myQuestions[qIndex].answers[i-1]);
+		 answerBtn.text(myQuestions[qIndex].answers[i-1]);
+		 $("#answer").append(answerBtn);
 	}
-}
+
+
+};
+
+displayQuestion([2]);
+
+$(".answer-button").on("click", function() {
+	console.log("clicked");
+	console.log($(this).attr("data-answer"));
+
+});
+
+
 
 $(document).ready(function(){
 
