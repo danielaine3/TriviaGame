@@ -33,38 +33,12 @@ var myQuestions = [
 
 ];
 
-
-function displayQuestion(qIndex) {
-
-	 $("#question").html(myQuestions[qIndex].question);
-
-	for (var i = 0; i < myQuestions.length; i++) {
-		 var answerBtn = $("<button>");
-		 answerBtn.addClass("answer-button");
-		 answerBtn.attr("data-answer", myQuestions[qIndex].answers[i-1]);
-		 answerBtn.text(myQuestions[qIndex].answers[i-1]);
-		 $("#answer").append(answerBtn);
-	}
-
-
-};
-
-displayQuestion([2]);
-
-$(".answer-button").on("click", function() {
-	console.log("clicked");
-	console.log($(this).attr("data-answer"));
-
-});
-
-
-
 $(document).ready(function(){
 
 //create button to start game
 var btn = document.createElement("button");
-var t = document.createTextNode("Start");
-btn.appendChild(t);
+var text = document.createTextNode("Start");
+btn.appendChild(text);
 $("#btn").append(btn);
 });
 
@@ -73,6 +47,8 @@ var number = 30;
 
 var intervalId;
 
+
+
 function start(){
 
 	$("#btn").on("click", function(){
@@ -80,24 +56,79 @@ function start(){
 		intervalId = setInterval(decrement, 1000)
 		console.log("Timer set.");
 		$('#btn').hide();
+
+		//function showQuestions- onclick of button
+		function displayQuestion(qIndex) {
+
+			 $("#question").html(myQuestions[qIndex].question);
+
+			for (var i = 0; i < myQuestions.length; i++) {
+				 var answerBtn = $("<button>");
+				 answerBtn.addClass("answer-button");
+				 answerBtn.attr("data-answer", myQuestions[qIndex].answers[i-1]);
+				 answerBtn.text(myQuestions[qIndex].answers[i-1]);
+				 answerBtn.click(checkAnswer);
+				 $("#answer").append(answerBtn);
+			}
+
+		};
+
+		displayQuestion([0]);
+
 	})
+};
+
+
+var qIndex= 0;
+
+function checkAnswer(){
+
+	console.log("clicked2");
+
+	var userSelect = $(this).attr("data-answer");
+
+	var correctAnswer = myQuestions[qIndex].correctAnswer; 
+
+	if(userSelect === correctAnswer) {
+
+		console.log("Correct!");
+		 qIndex++;
+		 displayQuestion();
+		
+	}
+
+	else {
+
+		console.log("Incorrect!");
+	};
 
 };
 
+//Set timer to decrease by 1 second until 0. 
 function decrement() {
 
 	number--;
 
-	$("#timer").html("<h2>" + number + "</h2>");
+	$("#timer").html("<h2>Time remaining: " + number + "</h2>");
 
 	if (number === 0) {
 
+		//stop the timer
 		stop();
 
 		alert("Time Up!");
 
 		console.log("Time Up!");
+
+		qIndex++;
 	} 
+
+}
+
+//function showResults- onclick of answer- use if/else, set time result shows on screen ~5seconds
+function showResults() {
+
+	
 }
 
 function stop(){
@@ -107,9 +138,9 @@ function stop(){
 
 start();
 
-//function showQuestions- onclick of button
 
-//function showResults- onclick of answer- use if/else, set time result shows on screen ~5seconds
+
+
 
 //move to next question automatically 
 //reset timer
