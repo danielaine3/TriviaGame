@@ -2,6 +2,8 @@ var correct = 0;
 
 var wrong = 0;
 
+var unanswered = 0;
+
 var myQuestions = [
 
 	{ "question": "What year was Phi Sigma Sigma founded?",
@@ -55,27 +57,38 @@ $(document).ready(function(){
 
 //create button to start game
 var btn = document.createElement("button");
+
 var text = document.createTextNode("Start");
+
 btn.appendChild(text);
+
 $("#btn").append(btn);
+
 });
 
-//Set button to start game onclick
-var number = 30;
+number = 31
 
 var intervalId;
 
 function start(){
-
+	//Set button to start game onclick
 	$("#btn").on("click", function(){
 
-		intervalId = setInterval(decrement, 1000)
-		console.log("Timer set.");
 		$('#btn').hide();
+
+		setTimer();
 
 		displayQuestion(0);
 
 	})
+};
+
+function setTimer(){
+		number = 31;
+		intervalId = setInterval(decrement, 1000)
+
+		console.log("Timer set.");
+
 };
 
 //function showQuestions- onclick of button
@@ -83,24 +96,34 @@ function displayQuestion(qIndex) {
 
 	console.log(qIndex);
 
-	 $("#question").html(myQuestions[qIndex].question);
+	if (qIndex <= (myQuestions.length-1)){
 
-	$("#answer").html('');
-	for (var i = 0; i < myQuestions.length; i++) {
+		$("#question").html(myQuestions[qIndex].question);
 
-		 var answerBtn = $("<button>");
+		$("#answer").html('');
+		for (var i = 0; i < myQuestions.length; i++) {
 
-		 answerBtn.addClass("answer-button");
+			 var answerBtn = $("<button>");
 
-		 answerBtn.attr("data-answer", myQuestions[qIndex].answers[i-1]);
+			 answerBtn.addClass("answer-button");
 
-		 answerBtn.text(myQuestions[qIndex].answers[i-1]);
+			 answerBtn.attr("data-answer", myQuestions[qIndex].answers[i-1]);
 
-		 answerBtn.click(checkAnswer);
+			 answerBtn.text(myQuestions[qIndex].answers[i-1]);
 
-		 $("#answer").append(answerBtn);
+			 answerBtn.click(checkAnswer);
+
+			 $("#answer").append(answerBtn);
+
+		};
 
 	}
+
+	else {
+
+		$("#results").html("<h2>Finished! Here's how you did! <br> Correct:" + correct + "<br> Incorrect: " + wrong + "<br> Unanswered: " + unanswered + "</h2>")
+	
+	};
 
 };
 
@@ -123,6 +146,10 @@ function checkAnswer(){
 		 qIndex++;
 
 		 displayQuestion(qIndex);
+
+		 stop();
+
+		 setTimer();
 		
 	}
 
@@ -154,22 +181,21 @@ function decrement() {
 
 		alert("Time Up!");
 
-		console.log("Time Up!");
+		console.log("Time Up!");		
 
 	} 
 
-}
+};
 
 //function showResults- onclick of answer- use if/else, set time result shows on screen ~5seconds
 function showResults() {
-
 	
-}
+};
 
 function stop(){
 
 	clearInterval(intervalId);
-}
+};
 
 start();
 
