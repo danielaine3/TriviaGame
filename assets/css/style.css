@@ -1,0 +1,15 @@
+body{
+	background-image: url("../images/yellowquatrefoil.jpg")
+}
+
+.content{
+	background-color: #FFFFFF;
+
+}
+footer{
+	justify-content: center;
+	background-color: #FFFFFF;
+	padding:30px;
+	margin-top: 40px;
+
+}
