@@ -66,7 +66,7 @@ $("#btn").append(btn);
 
 });
 
-number = 31
+var number = 16;
 
 var intervalId;
 
@@ -74,7 +74,7 @@ function start(){
 	//Set button to start game onclick
 	$("#btn").on("click", function(){
 
-		$('#btn').hide();
+		$("#btn").hide();
 
 		setTimer();
 
@@ -83,127 +83,127 @@ function start(){
 	})
 };
 
-function setTimer(){
-		number = 31;
+
+
+function setTimer() {
+
+		number = 16;
+
 		intervalId = setInterval(decrement, 1000)
 
 		console.log("Timer set.");
 
 };
 
+
 //function showQuestions- onclick of button
 function displayQuestion(qIndex) {
 
-	console.log(qIndex);
-
-	if (qIndex <= (myQuestions.length-1)){
+	if (qIndex <= (myQuestions.length -1)) {
 
 		$("#question").html(myQuestions[qIndex].question);
 
+		//reset html of answer div to blank before adding answer-buttons of next question
 		$("#answer").html('');
-		for (var i = 0; i < myQuestions.length; i++) {
+
+		//Add answer buttons for selected questions
+		for (var i = 0; i < myQuestions[qIndex].answers.length; i++) {
 
 			 var answerBtn = $("<button>");
 
 			 answerBtn.addClass("answer-button");
 
-			 answerBtn.attr("data-answer", myQuestions[qIndex].answers[i-1]);
+			 answerBtn.attr("data-answer", myQuestions[qIndex].answers[i]);
 
-			 answerBtn.text(myQuestions[qIndex].answers[i-1]);
+			 answerBtn.text(myQuestions[qIndex].answers[i]);
 
-			 answerBtn.click(checkAnswer);
+			answerBtn.click(checkAnswer);
 
 			 $("#answer").append(answerBtn);
-
 		};
-
 	}
 
 	else {
+		//stop timer
+		stop();
 
-		$("#results").html("<h2>Finished! Here's how you did! <br> Correct:" + correct + "<br> Incorrect: " + wrong + "<br> Unanswered: " + unanswered + "</h2>")
-	
+		//Show results
+		$("#results").html("<h2>Finished! Here's how you did: <br> Correct:" + correct + "<br> Incorrect: " + wrong + "<br> Unanswered: " + unanswered + "</h2>");
+
+		//disable buttons clickability
+		$(".answer-button").off('click');
 	};
-
 };
 
 var qIndex= 0;
 
 function checkAnswer(){
-
 	console.log("clicked2");
-
 	var userSelect = $(this).attr("data-answer");
-
 	var correctAnswer = myQuestions[qIndex].correctAnswer; 
 
 	if(userSelect === correctAnswer) {
-
 		console.log("Correct!");
 
+		//add one to correct answer count
 		correct++;
 
-		 qIndex++;
+		console.log("Number correct: " + correct);
 
-		 displayQuestion(qIndex);
-
-		 stop();
-
-		 setTimer();
-		
-	}
-
-	else {
-
+		//run showResults function
+		showResults();
+	} 
+	else if (userSelect != correctAnswer) {
 		console.log("Incorrect!");
-
+		//add one to wrong answer count
 		wrong++;
+		console.log("Number wrong: " + wrong);
+		//run showResults function
+		showResults();
+	}
+	else {
+		console.log("No answer selected!");
+		
+	 	//add one to unanswered count
+		unanswered++;
 
-		qIndex++;
+		console.log("Number unanswered: " + unanswered);
 
-		displayQuestion(qIndex);
-
+		showResults();
 	};
+};
 
+function nextQuestion() {
+	console.log("Next question.")
+	//add one to qIndex
+	qIndex++;
+	//move to next question automatically
+	displayQuestion(qIndex);
+};
+
+function showResults(){
+		stop();
+		nextQuestion();
+		setTimer();
 };
 
 //Set timer to decrease by 1 second until 0. 
 function decrement() {
-
 	number--;
-
-	$("#timer").html("<h2>Time remaining: " + number + "</h2>");
+	//set timer div to show text and decrementing timer
+	$("#timer").html("<h2>Time remaining: <br>" + number + "</h2>");
 
 	if (number === 0) {
-
+		console.log("Time Up!");	
 		//stop the timer
 		stop();
-
-		alert("Time Up!");
-
-		console.log("Time Up!");		
-
-	} 
-
-};
-
-//function showResults- onclick of answer- use if/else, set time result shows on screen ~5seconds
-function showResults() {
-	
+	};
 };
 
 function stop(){
-
+	console.log("Timer stopped.")
 	clearInterval(intervalId);
+	nextQuestion();
 };
 
 start();
-
-
-
-
-
-//move to next question automatically 
-//reset timer
-
-
