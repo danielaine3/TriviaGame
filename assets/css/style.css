@@ -1,12 +1,70 @@
-body{
+body {
 	background-image: url("../images/yellowquatrefoil.jpg")
 }
 
-.content{
-	background-color: #FFFFFF;
+#title {
+	position: fixed;
+	left:0;
+	top:0;
+	width:100%;
+	background-color: #9DB5D6;
+	text-align: center;
+	font-size:40px;
+	color:#FFFFFF;
+	padding:10px;
+	margin-bottom: 20px;
+	text-shadow:
+		-1px -1px 0 #062764,
+		1px -1px 0 #062764,
+		-1px 1px 0 #062764,
+		1px 1px 0 #062764
+}
+
+.content {
+	position: relative;
+	top:90px;
+	width:100%;
+	justify-content: center;
 
 }
-footer{
+
+#startBtn {
+
+
+
+}
+
+#btn {
+
+
+
+}
+
+#timer {
+
+
+}
+
+#question {
+
+
+}
+
+#answer {
+
+
+}
+
+#results {
+
+
+}
+
+footer {
+	position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
 	justify-content: center;
 	background-color: #FFFFFF;
 	padding:30px;

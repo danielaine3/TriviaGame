@@ -55,14 +55,14 @@ var myQuestions = [
 
 $(document).ready(function(){
 
-//create button to start game
-var btn = document.createElement("button");
+	//create button to start game
+	var startBtn = document.createElement("button");
 
-var text = document.createTextNode("Start");
+	var text = document.createTextNode("Start");
 
-btn.appendChild(text);
+	startBtn.appendChild(text);
 
-$("#btn").append(btn);
+	$("#btn").append(startBtn);
 
 });
 
@@ -76,37 +76,31 @@ function start(){
 
 		$("#btn").hide();
 
-		setTimer();
-
 		displayQuestion(0);
 
 	})
 };
 
-
-
 function setTimer() {
 
-		number = 16;
+	number = 16;
 
-		intervalId = setInterval(decrement, 1000)
+	intervalId = setInterval(decrement, 1000);
 
 		console.log("Timer set.");
 
 };
 
-
 //function showQuestions- onclick of button
 function displayQuestion(qIndex) {
 
-	if (qIndex <= (myQuestions.length -1)) {
+		setTimer();
 
 		$("#question").html(myQuestions[qIndex].question);
 
 		//reset html of answer div to blank before adding answer-buttons of next question
 		$("#answer").html('');
 
-		//Add answer buttons for selected questions
 		for (var i = 0; i < myQuestions[qIndex].answers.length; i++) {
 
 			 var answerBtn = $("<button>");
@@ -117,93 +111,126 @@ function displayQuestion(qIndex) {
 
 			 answerBtn.text(myQuestions[qIndex].answers[i]);
 
-			answerBtn.click(checkAnswer);
+			 answerBtn.click(checkAnswer);
 
 			 $("#answer").append(answerBtn);
 		};
-	}
-
-	else {
-		//stop timer
-		stop();
-
-		//Show results
-		$("#results").html("<h2>Finished! Here's how you did: <br> Correct:" + correct + "<br> Incorrect: " + wrong + "<br> Unanswered: " + unanswered + "</h2>");
-
-		//disable buttons clickability
-		$(".answer-button").off('click');
-	};
 };
 
 var qIndex= 0;
 
 function checkAnswer(){
+
 	console.log("clicked2");
+
 	var userSelect = $(this).attr("data-answer");
+
 	var correctAnswer = myQuestions[qIndex].correctAnswer; 
 
 	if(userSelect === correctAnswer) {
+
+		showResult("correct");
+	}
+	else {
+		showResult("incorrect");
+	};
+};
+	
+function showResult(result) {
+	if(result === "correct") {
+
 		console.log("Correct!");
 
-		//add one to correct answer count
 		correct++;
 
 		console.log("Number correct: " + correct);
 
-		//run showResults function
-		showResults();
-	} 
-	else if (userSelect != correctAnswer) {
+		nextQuestion();
+	}
+	else if(result === "incorrect") {
+
 		console.log("Incorrect!");
-		//add one to wrong answer count
+
 		wrong++;
+
 		console.log("Number wrong: " + wrong);
-		//run showResults function
-		showResults();
+
+		nextQuestion();
 	}
 	else {
 		console.log("No answer selected!");
-		
-	 	//add one to unanswered count
+
 		unanswered++;
 
 		console.log("Number unanswered: " + unanswered);
 
-		showResults();
-	};
+		nextQuestion();
+	}
 };
 
 function nextQuestion() {
-	console.log("Next question.")
-	//add one to qIndex
-	qIndex++;
-	//move to next question automatically
-	displayQuestion(qIndex);
-};
 
-function showResults(){
+	qIndex++;
+
+	if (qIndex <= (myQuestions.length -1)) {
+
 		stop();
-		nextQuestion();
-		setTimer();
+
+		//move to next question automatically 
+		displayQuestion(qIndex);
+
+
+		console.log("nextQ");
+	}
+
+	else {
+
+		clearInterval(intervalId);
+
+		console.log("end of round");
+
+		// //Show results
+		$("#results").html("<h2>Finished! Here's how you did: <br> Correct:" + correct + "<br> Incorrect: " + wrong + "<br> Unanswered: " + unanswered + "</h2>");
+
+		//disable buttons clickability
+		$(".answer-button").off('click');
+
+		$("#timer").hide();
+
+	};	
 };
 
 //Set timer to decrease by 1 second until 0. 
 function decrement() {
+
 	number--;
-	//set timer div to show text and decrementing timer
-	$("#timer").html("<h2>Time remaining: <br>" + number + "</h2>");
+
+	$("#timer").html("<h2>Time remaining: " + number + "</h2>");
 
 	if (number === 0) {
-		console.log("Time Up!");	
-		//stop the timer
-		stop();
-	};
+		showResult();
+		// nextQuestion("0");
+
+		console.log("Time Up!");
+
+
+
+	} 
+
 };
 
+//function showResults- onclick of answer- use if/else, set time result shows on screen ~5seconds
+// function showResults() {
+	
+// };
+
 function stop(){
+
 	console.log("Timer stopped.")
+
 	clearInterval(intervalId);
-	nextQuestion();
+
 };
 
 start();
+
