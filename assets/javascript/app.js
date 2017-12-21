@@ -41,7 +41,7 @@ var myQuestions = [
 	},
 	{ "question": "What does Diokete Hupsala mean?",
 		"answers": ['Once, Always','Aim High','Do Good','Seek the Noblest'],
-		"correctAnswer": 'Diokete Hupsala',
+		"correctAnswer": 'Aim High',
 		"image": 'assets/images/aimhigh.jpg'
 	},
 	{ "question": "What is Phi Sigma Sigma's symbol?",
@@ -77,7 +77,7 @@ function start(){
 		$("#btn").hide();
 
 		displayQuestion(0);
-	})
+	});
 };
 
 function setTimer() {
@@ -85,11 +85,9 @@ function setTimer() {
 	number = 16;
 	decrement();
 	intervalId = setInterval(decrement, 1000);
-
-		console.log("Timer set.");
+	console.log("Timer set.");
 };
 
-//function showQuestions- onclick of button
 function displayQuestion(qIndex) {
 
 	setTimer();
@@ -124,7 +122,6 @@ function displayQuestion(qIndex) {
 
 var qIndex= 0;
 
-
 function checkAnswer(){
 
 	console.log("clicked2");
@@ -138,7 +135,7 @@ function checkAnswer(){
 	}
 	else {
 		showResult("incorrect");
-	}
+	};
 };
 	
 function showResult(result) {
@@ -152,7 +149,7 @@ function showResult(result) {
 
 		nextQuestion();
 
-		$("#results").html("<p>Correct!</p>");
+		$("#results").html("<p>Correct! The answer is " + myQuestions[qIndex].correctAnswer + ".</p>");
 
 		showPicture();
 	}
@@ -165,7 +162,7 @@ function showResult(result) {
 
 		nextQuestion();
 
-		$("#results").html("<p>Nope! <br> The correct answer was " + myQuestions[qIndex].correctAnswer + ".</p>");
+		$("#results").html("<p>Nope! <br> The correct answer is " + myQuestions[qIndex].correctAnswer + ".</p>");
 
 		showPicture();
 	}
@@ -178,7 +175,7 @@ function showResult(result) {
 
 		nextQuestion();
 
-		$("#results").html("<p>No answer selected! <br> The correct answer was " + myQuestions[qIndex].correctAnswer + ".</p>");
+		$("#results").html("<p>No answer selected! <br> The correct answer is " + myQuestions[qIndex].correctAnswer + ".</p>");
 
 		showPicture();
 	};
@@ -230,7 +227,7 @@ function decrement() {
 
 	number--;
 
-	$("#timer").html("<h2>Time remaining: " + number + "</h2>");
+	$("#timer").html("<h1>Time remaining: " + number + "</h1>");
 
 	if (number === 0) {
 		showResult();
@@ -240,7 +237,7 @@ function decrement() {
 
 function stop(){
 
-	console.log("Timer stopped.")
+	console.log("Timer stopped.");
 
 	clearInterval(intervalId);
 };
