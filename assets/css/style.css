@@ -1,18 +1,27 @@
 body {
-	background-image: url("../images/yellowquatrefoil.jpg")
+	font-family: 'Barlow Condensed', sans-serif;
+	background-image: url("../images/yellowquatrefoil.jpg");
+	min-height:100%;
+
+}
+
+p {
+	color: #062764;
+	font-size: 40px;
+	text-align: center;
+
 }
 
 #title {
-	position: fixed;
+	font-size:60px;
+	color:#FFFFFF;
+	position: relative;
 	left:0;
 	top:0;
 	width:100%;
 	background-color: #9DB5D6;
 	text-align: center;
-	font-size:40px;
-	color:#FFFFFF;
 	padding:10px;
-	margin-bottom: 20px;
 	text-shadow:
 		-1px -1px 0 #062764,
 		1px -1px 0 #062764,
@@ -20,54 +29,83 @@ body {
 		1px 1px 0 #062764
 }
 
+.container {
+	margin-bottom: 40px;
+}
+
 .content {
-	position: relative;
-	top:90px;
-	width:100%;
-	justify-content: center;
+	top:50px;
+
+}
+
+.row {
+	color: #062764;
+	font-size: 40px;
 
 }
 
 #startBtn {
-
-
+	margin-bottom: 25px;
 
 }
 
-#btn {
+button {
+	background-color: #9DB5D6;
+	color: #FFFFFF;
+	font-size: 30px;
+	padding: 25px;
 
+}
 
+button:hover {
+	background-color: #062764;
+}
 
+.answer-button {
+	background-color: #9DB5D6;
+	color: #FFFFFF;
+	font-size: 35px;
+	padding: 20px;
+	margin: 0px 5px 25px 5px;
+}
+
+.answer-button:hover {
+	background-color: #062764;
 }
 
 #timer {
-
+	margin-bottom: 25px;
+	text-align: center;
 
 }
 
 #question {
-
-
+	margin-bottom: 25px;
+	text-align: center;
 }
 
 #answer {
+	margin-bottom: 25px;
+}
 
+#pic {
+	margin-bottom: 25px;
 
 }
 
 #results {
-
+	margin-bottom: 25px;
 
 }
 
 footer {
-	position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-	justify-content: center;
+	margin:auto;
+	width:100%;
+	bottom:0;
+	left:0;
+	clear:both;
+	text-align: center;
 	background-color: #FFFFFF;
-	padding:30px;
+	padding:20px;
 	margin-top: 40px;
-
 }

@@ -7,7 +7,7 @@ var myQuestions = [
 	{ "question": "What year was Phi Sigma Sigma founded?",
 		"answers": ['1912','1913','1920','1921'],
 		"correctAnswer":'1913',
-		"image": 'assets/images/1913.jpg'
+		"image": 'assets/images/est1913.jpg'
 	},
 	{ "question": "At what school was Phi Sigma Sigma founded?",
 		"answers": ['Hunter College','New York University','Cornell University','Columbia University'],
@@ -18,7 +18,6 @@ var myQuestions = [
 		"answers": ['Ruby','Diamond','Emerald','Sapphire'],
 		"correctAnswer": 'Sapphire',
 		"image": 'assets/images/sapphire.jpg'
-
 	},
 	{ "question": "How many founders does Phi Sigma Sigma have?",
 		"answers": ['12','3','10','6'],
@@ -45,7 +44,6 @@ var myQuestions = [
 		"correctAnswer": 'Diokete Hupsala',
 		"image": 'assets/images/aimhigh.jpg'
 	},
-
 	{ "question": "What is Phi Sigma Sigma's symbol?",
 		"answers": ['Skull & Crossbones','Anchor','Arrow','Sphinx'],
 		"correctAnswer": 'Sphinx',
@@ -62,7 +60,6 @@ $(document).ready(function(){
 
 	//create button to start game
 	var startBtn = document.createElement("button");
-
 	var text = document.createTextNode("Start");
 
 	startBtn.appendChild(text);
@@ -70,7 +67,7 @@ $(document).ready(function(){
 	$("#btn").append(startBtn);
 });
 
-var number = 4;
+var number = 16;
 var intervalId;
 
 function start(){
@@ -85,7 +82,8 @@ function start(){
 
 function setTimer() {
 
-	number = 4;
+	number = 16;
+	decrement();
 	intervalId = setInterval(decrement, 1000);
 
 		console.log("Timer set.");
@@ -140,7 +138,7 @@ function checkAnswer(){
 	}
 	else {
 		showResult("incorrect");
-	};
+	}
 };
 	
 function showResult(result) {
@@ -154,7 +152,7 @@ function showResult(result) {
 
 		nextQuestion();
 
-		$("#results").html("Correct!");
+		$("#results").html("<p>Correct!</p>");
 
 		showPicture();
 	}
@@ -167,7 +165,7 @@ function showResult(result) {
 
 		nextQuestion();
 
-		$("#results").html("Nope! The correct answer was " + myQuestions[qIndex].correctAnswer + ".");
+		$("#results").html("<p>Nope! <br> The correct answer was " + myQuestions[qIndex].correctAnswer + ".</p>");
 
 		showPicture();
 	}
@@ -180,10 +178,9 @@ function showResult(result) {
 
 		nextQuestion();
 
-		$("#results").html("No answer selected! The correct answer was " + myQuestions[qIndex].correctAnswer + ".");
-		
-		showPicture();
+		$("#results").html("<p>No answer selected! <br> The correct answer was " + myQuestions[qIndex].correctAnswer + ".</p>");
 
+		showPicture();
 	};
 };
 
