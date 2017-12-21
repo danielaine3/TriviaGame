@@ -40,6 +40,7 @@ p {
 	margin: auto;
 	color: #062764;
 	text-align: center;
+	min-height:500px;
 
 }
 
@@ -107,19 +108,20 @@ button:hover {
 #results {
 	margin-bottom: 25px;
 	text-align: center;
+	font-size: 40px;
 
 }
 
 footer {
-	background-color: #FFFFFF;
-	padding:25px;
-	text-align: center;
-	color:#062764;
-	font-size: 20px;
-	margin:auto;
+	position:relative;
 	width:100%;
-	position: fixed;
-	bottom:0;
-	left:0;
+	font-size:20px;
+	background-color: #FFFFFF;
+	text-align: center;
+	vertical-align: middle;
+	color:#062764;
+	height:60px;
+	margin-top: 30px;
+
 
 }

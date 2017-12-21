@@ -124,8 +124,6 @@ var qIndex= 0;
 
 function checkAnswer(){
 
-	console.log("clicked2");
-
 	var userSelect = $(this).attr("data-answer");
 	var correctAnswer = myQuestions[qIndex].correctAnswer;
 
@@ -213,7 +211,7 @@ function nextQuestion() {
 			console.log("end of round");
 
 			// //Show results
-			$("#results").html("<h2>Finished! Here's how you did: <br> Correct:" + correct + "<br> Incorrect: " + wrong + "<br> Unanswered: " + unanswered + "</h2>");
+			$("#results").html("Finished! Here's how you did: <br> Correct: " + correct + "<br> Incorrect: " + wrong + "<br> Unanswered: " + unanswered);
 
 			$("#question").hide();
 
