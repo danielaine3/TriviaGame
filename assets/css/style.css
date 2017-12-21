@@ -13,7 +13,7 @@ p {
 }
 
 #title {
-	font-size:60px;
+	font-size:80px;
 	color:#FFFFFF;
 	position: relative;
 	left:0;
@@ -21,7 +21,8 @@ p {
 	width:100%;
 	background-color: #9DB5D6;
 	text-align: center;
-	padding:10px;
+	padding:15px;
+	margin-bottom: 20px;
 	text-shadow:
 		-1px -1px 0 #062764,
 		1px -1px 0 #062764,
@@ -34,11 +35,10 @@ p {
 	margin-bottom: 40px;
 }
 
-.row {
+.content {
 	width:100%;
 	margin: auto;
 	color: #062764;
-	font-size: 40px;
 	text-align: center;
 
 }
@@ -46,9 +46,9 @@ p {
 button {
 	background-color: #9DB5D6;
 	color: #FFFFFF;
-	font-size: 60px;
+	font-size: 40px;
 	padding: 10px 100px 10px 100px;
-	margin-top: 45px;
+	margin-top: 20px;
 	text-shadow:
 		-1px -1px 0 #062764,
 		1px -1px 0 #062764,
@@ -64,9 +64,9 @@ button:hover {
 .answer-button {
 	background-color: #9DB5D6;
 	color: #FFFFFF;
-	font-size: 35px;
+	font-size: 30px;
 	padding: 5px 20px 5px 20px;
-	margin: 0px 5px 25px 5px;
+	margin: 5px;
 	text-shadow:
 		-1px -1px 0 #062764,
 		1px -1px 0 #062764,
@@ -79,19 +79,28 @@ button:hover {
 	background-color: #062764;
 }
 
+#timer{
+	font-size: 45px;
+	font-weight: bold;
+	margin-bottom: 25px;
+}
+
 #question {
+	font-size: 40px;
 	margin-bottom: 25px;
 	text-align: center;
 }
 
 #answer {
-	margin-bottom: 25px;
+	margin-bottom: 40px;
 	text-align: center;
 }
 
 #pic {
 	margin-bottom: 25px;
-	text-align: center;
+	content-align: center;
+	height:350px;
+	width:350px;
 
 }
 
@@ -102,16 +111,15 @@ button:hover {
 }
 
 footer {
-	margin:auto;
-	width:100%;
-	bottom:0;
-	left:0;
-	clear:both;
-	text-align: center;
 	background-color: #FFFFFF;
+	padding:25px;
+	text-align: center;
 	color:#062764;
 	font-size: 20px;
-	padding:20px;
-	margin-top: 40px;
-	margin-bottom:0;
+	margin:auto;
+	width:100%;
+	position: fixed;
+	bottom:0;
+	left:0;
+
 }
