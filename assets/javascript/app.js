@@ -53,7 +53,7 @@ var myQuestions = [
 	},
 	{ "question": "What does LITP mean?",
 		"answers": ['Lean into thy prayer','Love in the Pyramid','Learning in the purest ','Lean into the Phi'],
-		"correctAnswer": 'Love in the Pyramid'
+		"correctAnswer": 'Love in the Pyramid',
 		"image": 'assets/images/logo.jpeg'
 	},
 ];
@@ -156,9 +156,7 @@ function showResult(result) {
 
 		$("#results").html("Correct!");
 
-		$("#pic").show();
-
-		$("#pic").attr('src', myQuestions[qIndex].image);
+		showPicture();
 	}
 	else if(result === "incorrect") {
 
@@ -170,6 +168,8 @@ function showResult(result) {
 		nextQuestion();
 
 		$("#results").html("Nope! The correct answer was " + myQuestions[qIndex].correctAnswer + ".");
+
+		showPicture();
 	}
 	else {
 
@@ -181,7 +181,16 @@ function showResult(result) {
 		nextQuestion();
 
 		$("#results").html("No answer selected! The correct answer was " + myQuestions[qIndex].correctAnswer + ".");
+		
+		showPicture();
+
 	};
+};
+
+function showPicture() {
+		$("#pic").show();
+
+		$("#pic").attr('src', myQuestions[qIndex].image);
 };
 
 function nextQuestion() {
