@@ -65,9 +65,7 @@ var intervalId;
 function start(){
 	//Set button to start game onclick
 	$("#btn").on("click", function(){
-
 		$("#btn").hide();
-
 		displayQuestion(0);
 	});
 };
@@ -158,6 +156,7 @@ function nextQuestion() {
 		};
 	}, 5000);	
 };
+
 //Set timer to decrease by 1 second until 0. 
 function decrement() {
 	number--;
