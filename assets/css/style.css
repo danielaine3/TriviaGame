@@ -1,0 +1,120 @@
+body {
+	font-family: 'Barlow Condensed', sans-serif;
+	background-image: url("../images/yellowquatrefoil.jpg");
+	min-height:100%;
+}
+
+p {
+	color: #062764;
+	font-size: 40px;
+	text-align: center;
+}
+
+#title {
+	font-size:80px;
+	color:#FFFFFF;
+	position: relative;
+	left:0;
+	top:0;
+	width:100%;
+	background-color: #9DB5D6;
+	text-align: center;
+	padding:15px;
+	margin-bottom: 20px;
+	text-shadow:
+		-1px -1px 0 #062764,
+		1px -1px 0 #062764,
+		-1px 1px 0 #062764,
+		1px 1px 0 #062764
+}
+
+.container {
+	width:100%;
+	margin-bottom: 40px;
+}
+
+.content {
+	width:100%;
+	margin: auto;
+	color: #062764;
+	text-align: center;
+	min-height:500px;
+}
+
+button {
+	background-color: #9DB5D6;
+	color: #FFFFFF;
+	font-size: 40px;
+	padding: 10px 100px 10px 100px;
+	margin-top: 20px;
+	text-shadow:
+		-1px -1px 0 #062764,
+		1px -1px 0 #062764,
+		-1px 1px 0 #062764,
+		1px 1px 0 #062764;
+	border-radius:15px;
+}
+
+button:hover {
+	background-color: #062764;
+}
+
+.answer-button {
+	background-color: #9DB5D6;
+	color: #FFFFFF;
+	font-size: 30px;
+	padding: 5px 20px 5px 20px;
+	margin: 5px;
+	text-shadow:
+		-1px -1px 0 #062764,
+		1px -1px 0 #062764,
+		-1px 1px 0 #062764,
+		1px 1px 0 #062764;
+	border-radius:15px;
+}
+
+.answer-button:hover {
+	background-color: #062764;
+}
+
+#timer{
+	font-size: 45px;
+	font-weight: bold;
+	margin-bottom: 25px;
+}
+
+#question {
+	font-size: 40px;
+	margin-bottom: 25px;
+	text-align: center;
+}
+
+#answer {
+	margin-bottom: 40px;
+	text-align: center;
+}
+
+#pic {
+	margin-bottom: 25px;
+	content-align: center;
+	height:350px;
+	width:350px;
+}
+
+#results {
+	margin-bottom: 25px;
+	text-align: center;
+	font-size: 40px;
+}
+
+footer {
+	position:relative;
+	width:100%;
+	font-size:20px;
+	background-color: #FFFFFF;
+	text-align: center;
+	vertical-align: middle;
+	color:#062764;
+	height:60px;
+	margin-top: 30px;
+}
