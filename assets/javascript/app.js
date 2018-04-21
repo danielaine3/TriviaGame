@@ -60,8 +60,10 @@ $(document).ready(function(){
 	startBtn.appendChild(text);
 	$("#btn").append(startBtn);
 });
+
 var number = 16;
 var intervalId;
+
 function start(){
 	//Set button to start game onclick
 	$("#btn").on("click", function(){
@@ -69,12 +71,14 @@ function start(){
 		displayQuestion(0);
 	});
 };
+
 function setTimer() {
 	number = 16;
 	decrement();
-	intervalId = setInterval(decrement, 0);
+	intervalId = setInterval(decrement, 1000);
 	console.log("Timer set.");
 };
+
 function displayQuestion(qIndex) {
 	setTimer();
 	$("#timer").show();
@@ -93,7 +97,9 @@ function displayQuestion(qIndex) {
 		 $("#answer").append(answerBtn);
 	};
 };
+
 var qIndex= 0;
+
 function checkAnswer(){
 	var userSelect = $(this).attr("data-answer");
 	var correctAnswer = myQuestions[qIndex].correctAnswer;
@@ -104,6 +110,7 @@ function checkAnswer(){
 		showResult("incorrect");
 	};
 };
+
 function showResult(result) {
 	if(result === "correct") {
 		correct++;
@@ -131,10 +138,12 @@ function showResult(result) {
 		showPicture();
 	};
 };
+
 function showPicture() {
 		$("#pic").show();
 		$("#pic").attr('src', myQuestions[qIndex].image);
 };
+
 function nextQuestion() {
 	clearInterval(intervalId);
 	$("#timer").hide();
