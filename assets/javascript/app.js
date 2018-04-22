@@ -175,6 +175,7 @@ function decrement() {
 		console.log("Time Up!");
 	} 
 };
+
 function stop(){
 	console.log("Timer stopped.");
 	clearInterval(intervalId);
